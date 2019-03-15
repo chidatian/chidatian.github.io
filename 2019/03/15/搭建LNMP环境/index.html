@@ -1,0 +1,130 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>搭建 LNMP 环境 | Hexo.js</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/font.css"><link rel="stylesheet" type="text/css" href="/css/noise.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"></head><body><article class="wrapper"><div class="post-main"><div class="nav"><nav class="container"><a class="sidebar-nav-item active" href="/">Home</a><a class="sidebar-nav-item" href="/archives">Archives</a></nav><div class="container post-meta"><div class="post-time">2019-03-15</div></div></div><div class="container post-header"><h1>搭建 LNMP 环境</h1></div><div class="container post-toc"><details class="toc"><summary class="toc-accordion">Table of Contents</summary><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#依赖文件"><span class="toc-number">1.</span> <span class="toc-text">依赖文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装-Nginx"><span class="toc-number">2.</span> <span class="toc-text">安装 Nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载-nginx"><span class="toc-number">2.0.1.</span> <span class="toc-text">下载 nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#依赖文件-解压-安装"><span class="toc-number">2.0.2.</span> <span class="toc-text">依赖文件(解压, 安装)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx-install"><span class="toc-number">2.0.3.</span> <span class="toc-text">nginx install</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx-目录"><span class="toc-number">2.0.4.</span> <span class="toc-text">nginx 目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#控制服务"><span class="toc-number">2.0.5.</span> <span class="toc-text">控制服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#防火墙"><span class="toc-number">2.0.6.</span> <span class="toc-text">防火墙</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#安装-PHP"><span class="toc-number">3.</span> <span class="toc-text">安装 PHP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-依赖"><span class="toc-number">3.0.1.</span> <span class="toc-text">安装 依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-install"><span class="toc-number">3.0.2.</span> <span class="toc-text">php install</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-目录"><span class="toc-number">3.0.3.</span> <span class="toc-text">php 目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数-详解"><span class="toc-number">3.0.4.</span> <span class="toc-text">参数 详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#制作php-ini文件"><span class="toc-number">3.0.5.</span> <span class="toc-text">制作php.ini文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务配置文件"><span class="toc-number">3.0.6.</span> <span class="toc-text">服务配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#创建主配置文件"><span class="toc-number">3.0.6.0.1.</span> <span class="toc-text">创建主配置文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#辅助配置文件"><span class="toc-number">3.0.6.0.2.</span> <span class="toc-text">辅助配置文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#服务控制"><span class="toc-number">3.0.6.0.3.</span> <span class="toc-text">服务控制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nginx与php结合"><span class="toc-number">4.</span> <span class="toc-text">nginx与php结合</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装-MySQL"><span class="toc-number">5.</span> <span class="toc-text">安装 MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#卸载旧的-MySQL-同apache"><span class="toc-number">5.0.1.</span> <span class="toc-text">卸载旧的 MySQL, 同apache</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载mysql组件"><span class="toc-number">5.0.2.</span> <span class="toc-text">下载mysql组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL-install"><span class="toc-number">5.0.3.</span> <span class="toc-text">MySQL install</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务控制-1"><span class="toc-number">5.0.4.</span> <span class="toc-text">服务控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看默认的root帐号密码"><span class="toc-number">5.0.5.</span> <span class="toc-text">查看默认的root帐号密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改root帐号密码"><span class="toc-number">5.0.6.</span> <span class="toc-text">修改root帐号密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置字符集"><span class="toc-number">5.0.7.</span> <span class="toc-text">设置字符集</span></a></li></ol></li></details></div><div class="container post-content"><p>LNMP : linux + nginx1 + mysql5 + php7</p>
+<h1 id="依赖文件"><a href="#依赖文件" class="headerlink" title="依赖文件"></a>依赖文件</h1><blockquote>
+<p>我们后边要安装的php、apache、mysql等相关的软件，这些软件都是通过C语言或C++语言编写的，因此需要安装gcc和gcc-c++编译器。</p>
+</blockquote>
+<blockquote>
+<p>zlib软件是后续其他软件的依赖软件，有其他软件有代码优化压缩的作用。</p>
+</blockquote>
+<h1 id="安装-Nginx"><a href="#安装-Nginx" class="headerlink" title="安装 Nginx"></a>安装 Nginx</h1><h3 id="下载-nginx"><a href="#下载-nginx" class="headerlink" title="下载 nginx"></a>下载 nginx</h3><ul>
+<li>官网：<a href="http://nginx.org" target="_blank" rel="noopener">http://nginx.org</a></li>
+<li>下载：<a href="http://nginx.org/download/nginx-1.12.2.tar.gz" target="_blank" rel="noopener">http://nginx.org/download/nginx-1.12.2.tar.gz</a></li>
+</ul>
+<h3 id="依赖文件-解压-安装"><a href="#依赖文件-解压-安装" class="headerlink" title="依赖文件(解压, 安装)"></a>依赖文件(解压, 安装)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] yum -y install pcre-devel</span><br></pre></td></tr></table></figure>
+<ul>
+<li>pcre 是线上产品</li>
+<li>pcre-devel(develop)是开发调试版本产品，里边有一些功能是线上产品不不具备</li>
+<li>pcre：        包括 perl 兼容的正则表达式库</li>
+</ul>
+<h3 id="nginx-install"><a href="#nginx-install" class="headerlink" title="nginx install"></a>nginx install</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] tar zxf nginx-1.12.2.tar.gz</span><br><span class="line">[root@localhost ~] ./configure --prefix=/usr/local/nginx --with-http_ssl_module</span><br><span class="line">[root@localhost ~] make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<ul>
+<li>–with-http_ssl_module            //配置https安全型协议支持</li>
+</ul>
+<h3 id="nginx-目录"><a href="#nginx-目录" class="headerlink" title="nginx 目录"></a>nginx 目录</h3><ul>
+<li>conf：配置文件目录</li>
+<li>html：网站默认请求目录，与apache的htdocs目录作用一致</li>
+<li>logs：记录日志文件目录</li>
+<li>sbin：执行程序文件目录，里边有一个nginx执行程序文件，负责控制nginx服务</li>
+</ul>
+<h3 id="控制服务"><a href="#控制服务" class="headerlink" title="控制服务"></a>控制服务</h3><p>在/usr/local/nginx/sbin目录里边进行服务操控</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] ./nginx     			开启apache服务</span><br><span class="line">[root@localhost ~] ./nginx -s stop     	关闭apache服务</span><br><span class="line">[root@localhost ~] ./nginx -s reload    重启apache服务</span><br></pre></td></tr></table></figure>
+<h3 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h3><p>为了使得外部用户浏览器可以访问到nginx服务效果，还需要把linux系统本身的防火墙给予关闭掉</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] setup</span><br></pre></td></tr></table></figure>
+<h1 id="安装-PHP"><a href="#安装-PHP" class="headerlink" title="安装 PHP"></a>安装 PHP</h1><blockquote>
+<p>apache+PHP：php是apache内部的功能模块，它们是包含与被包含的关系<br><img src="https://github.com/chidatian/chidatian.github.io/blob/master/pic/lnmp/apache_php.png" alt></p>
+</blockquote>
+<blockquote>
+<p>nginx+PHP：php作为独立服务运行，与nginx地位平等<br><img src="https://github.com/chidatian/chidatian.github.io/blob/master/pic/lnmp/nginx_php.png" alt></p>
+</blockquote>
+<h3 id="安装-依赖"><a href="#安装-依赖" class="headerlink" title="安装 依赖"></a>安装 依赖</h3><h3 id="php-install"><a href="#php-install" class="headerlink" title="php install"></a>php install</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] tar zxf php-7.0.25.tar.gz</span><br><span class="line">[root@localhost ~] ./configure --prefix=/usr/local/php7.0 --with-config-file-path=/usr/local/php7.0/etc --with-curl --with-freetype-dir --with-gd --with-gettext --with-iconv-dir --with-kerberos --with-jpeg-dir --with-libxml-dir --with-mysqli --with-openssl --with-pcre-regex --with-pdo-mysql --with-pear --with-png-dir --with-xmlrpc --with-xsl --with-zlib --enable-bcmath --enable-libxml --enable-inline-optimization --enable-gd-native-ttf --enable-mbregex --enable-mbstring --enable-opcache --enable-pcntl --enable-shmop --enable-soap --enable-sockets --enable-sysvsem --enable-xml --enable-zip --enable-fpm</span><br><span class="line">[root@localhost ~] make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>现在我们给php做configure配置，和 LAMP 不同的是：</p>
+</blockquote>
+<ul>
+<li>去除apache参数</li>
+<li>增加enable-fpm，作用是使得php作为独立服务运行</li>
+<li><p>增加–with-config-file-path参数，设置php.ini配置文件存储目录</p>
+<h3 id="php-目录"><a href="#php-目录" class="headerlink" title="php 目录"></a>php 目录</h3></li>
+<li><p>bin：        运行目录，里边有php脚本文件，可以运行php程序文件。<br>还有用于添加扩展的phpize和php-config等文件</p>
+</li>
+<li>etc：        配置文件目录，马上要把php.ini创建在该目录</li>
+<li>include：    包含目录，其中include/php/ext是php扩展功能目录，<br>例如gd、mysqli、libxml、pcre、pdo等都安装在该目录</li>
+<li>lib：        library资源库目录，<br>其中lib/php/extensions/no-debug-non-zts-20151012<br>目录是用于存储后期给php增加相关功能模块，<br>例如redis.so、memcache.so等都会存储在该目录，<br>并且在php.ini文件中可以直接引入</li>
+<li>sbin：        运行目录，里边的php-fpm是负责管理php服务的</li>
+<li>var：        variable变化目录，该目录中有run和log目录，<br>都是存储php运行过程中产生的日志或临时文件的</li>
+</ul>
+<h3 id="参数-详解"><a href="#参数-详解" class="headerlink" title="参数 详解"></a>参数 详解</h3><ul>
+<li>–with-apxs2=/usr/local/apache2/bin/apxs –&gt; 上边的指令会在安装php的时候就自动生成php模块，名称为libphp7so，并且该模块会生成到apache的对应模块目录(/usr/local/apache2/modules/)里边，然后还会自动去修改httpd.conf文件，使得引入该libphp7.so的模块</li>
+<li>–with-curl –&gt; 打开curl的支持，使得php可以访问其他网站的网址并获得对应的内容，是爬虫技术范畴，file_get_contents(“<a href="http://xxx”)" target="_blank" rel="noopener">http://xxx”)</a>;</li>
+<li>–with-freetype-dir         –&gt;     字体库支持</li>
+<li>–with-gd –&gt; 画图技术支持，我们并不需要主动安装gd库，该gd库已经被集成在php内部(如下图)了，随着php安装gd库也会被自动安装好</li>
+<li>–with-gettext          –&gt;         支持开发多语言系统</li>
+<li>–with-iconv-dir          –&gt;         iconv函数库能够完成各种字符集间的转换</li>
+<li>–with-kerberos          –&gt;         kerberos支持</li>
+<li>–with-jpeg-dir      –&gt;              jpeg图片格式支持</li>
+<li>–with-libxml-dir      –&gt;             libxml2库的支持</li>
+<li>–with-mysqli      –&gt;                 Mysqli数据库的支持</li>
+<li>–with-openssl –&gt; openssl的支持，加密传输时用到的,类似这样的协议<a href="https://xx就需要openssl的技术支持" target="_blank" rel="noopener">https://xx就需要openssl的技术支持</a></li>
+<li>–with-pcre-regex      –&gt;             正则表达式支持</li>
+<li>–with-pdo-mysql          –&gt;         pdo-mysql支持</li>
+<li>–with-pear          –&gt;  pear是PHP的扩展和应用程序库，包含了很多有用的类</li>
+<li>–with-png-dir      –&gt;             png图片格式支持</li>
+<li>–with-xmlrpc      –&gt;                 xml相关的扩展库支持</li>
+<li>–with-xsl          –&gt;             打开XSLT 文件支持，扩展了libXML2库 ，需要libxslt软件</li>
+<li>–with-zlib          –&gt;             zlib压缩库支持</li>
+<li>–enable-bcmath      –&gt;             图片大小调整技术支持</li>
+<li>–enable-libxml      –&gt;             xml支持</li>
+<li>–enable-inline-optimization –&gt;      优化线程，给php整体做性能优化处理</li>
+<li>–enable-gd-native-ttf  –&gt;         画图字体库支持，支持TrueType字符串函数库</li>
+<li>–enable-mbregex          –&gt;         正则表达式支持</li>
+<li>–enable-mbstring      –&gt;             mb宽字节函数库支持</li>
+<li>–enable-opcache          –&gt;         缓存支持</li>
+<li>–enable-pcntl          –&gt;         pcntl扩展可以支持php的多线程操作</li>
+<li>–enable-shmop      –&gt;             shmop是一个易于使用的功能集，允许PHP读，写，创建和删除UNIX共享内存段</li>
+<li>–enable-sysvsem        –&gt;         作用同上</li>
+<li>–enable-soap          –&gt;         SOAP 的全称为简单对象访问协议 (Simple Object Access Protocol)。它是一种基于 XML 的，可扩展的通信协议。SOAP 提供了一种标准，使得运行在不同平台上并使用不同的编程语言编写的应用程序可以互相进行通信</li>
+<li>–enable-sockets          –&gt;         sockets 支持</li>
+<li>–enable-xml          –&gt;             xml支持</li>
+<li>–enable-zip         –&gt;             php支持对zip压缩包处理</li>
+</ul>
+<p>(上述有一些配置参数没有设置依赖软件的路径名，其会到系统默认位置找到对应的软件，如果依赖软件没有安装到系统默认位置，则需要通过完整路径名显示设置好。还有一些配置参数本身就是“是或否”的意思，则不需要设置依赖路径名)</p>
+<h3 id="制作php-ini文件"><a href="#制作php-ini文件" class="headerlink" title="制作php.ini文件"></a>制作php.ini文件</h3><p>在php解压目录里边把php.ini-development 复制到/usr/local/php7.0/lib/php.ini</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] cp php.ini-development /usr/local/php7.0/lib/php.ini</span><br></pre></td></tr></table></figure>
+<h3 id="服务配置文件"><a href="#服务配置文件" class="headerlink" title="服务配置文件"></a>服务配置文件</h3><p>php是作为独立服务与nginx进行合作工作的，现在需要给“php服务”创建配置文件</p>
+<h5 id="创建主配置文件"><a href="#创建主配置文件" class="headerlink" title="创建主配置文件"></a>创建主配置文件</h5><blockquote>
+<p>把php-fpm.conf.default文件复制到当前目录并改名字为php-fpm.conf，这个文件就是“php服务”的主配置文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] pwd</span><br><span class="line">/usr/local/php7.0/etc</span><br><span class="line">[root@localhost ~] cp php-fpm.conf.default php-fpm.conf</span><br></pre></td></tr></table></figure>
+<h5 id="辅助配置文件"><a href="#辅助配置文件" class="headerlink" title="辅助配置文件"></a>辅助配置文件</h5><blockquote>
+<p>/usr/local/php7.0/etc/php-fpm.d/<a href="http://www.conf.default" target="_blank" rel="noopener">www.conf.default</a> 辅助配置文件<br>在“辅助配置文件”中有“php服务”运行的详细参数(例如服务的端口号码9000等)，只有被主配置文件引入后php服务才可以正常运行代表对辅助配置文件进行引入，但是辅助配置文件需要改名字为.conf后缀的</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] pwd</span><br><span class="line">/usr/local/php7.0/etc/php-fpm.d</span><br><span class="line">[root@localhost ~] cp www.conf.default www.conf</span><br></pre></td></tr></table></figure>
+<h5 id="服务控制"><a href="#服务控制" class="headerlink" title="服务控制"></a>服务控制</h5><ul>
+<li>php-fpm            启动</li>
+<li>killall php-fpm     关闭</li>
+</ul>
+<h1 id="nginx与php结合"><a href="#nginx与php结合" class="headerlink" title="nginx与php结合"></a>nginx与php结合</h1><h1 id="安装-MySQL"><a href="#安装-MySQL" class="headerlink" title="安装 MySQL"></a>安装 MySQL</h1><h3 id="卸载旧的-MySQL-同apache"><a href="#卸载旧的-MySQL-同apache" class="headerlink" title="卸载旧的 MySQL, 同apache"></a>卸载旧的 MySQL, 同apache</h3><h3 id="下载mysql组件"><a href="#下载mysql组件" class="headerlink" title="下载mysql组件"></a>下载mysql组件</h3><ul>
+<li>官网：<a href="https://www.mysql.com" target="_blank" rel="noopener">https://www.mysql.com</a></li>
+<li>下载地址：<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a></li>
+</ul>
+<h3 id="MySQL-install"><a href="#MySQL-install" class="headerlink" title="MySQL install"></a>MySQL install</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root ~] rpm -ivh mysql-community-common-5.7.20-1.el6.i686.rpm</span><br><span class="line">[root ~] rpm -ivh mysql-community-libs-5.7.20-1.el6.i686.rpm</span><br><span class="line">[root ~] rpm -ivh mysql-community-client-5.7.20-1.el6.i686.rpm</span><br><span class="line">[root ~] rpm -ivh mysql-community-server-5.7.20-1.el6.i686.rpm</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>以上组件的安装是有自上而下的顺序要求，因为它们彼此有依赖关系。</p>
+</blockquote>
+<h3 id="服务控制-1"><a href="#服务控制-1" class="headerlink" title="服务控制"></a>服务控制</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] service mysqld start[/stop/restart]</span><br></pre></td></tr></table></figure>
+<h3 id="查看默认的root帐号密码"><a href="#查看默认的root帐号密码" class="headerlink" title="查看默认的root帐号密码"></a>查看默认的root帐号密码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] grep &quot;root@localhost&quot; /var/log/mysqld.log</span><br></pre></td></tr></table></figure>
+<h3 id="修改root帐号密码"><a href="#修改root帐号密码" class="headerlink" title="修改root帐号密码"></a>修改root帐号密码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;123456&apos;;</span><br></pre></td></tr></table></figure>
+<h3 id="设置字符集"><a href="#设置字符集" class="headerlink" title="设置字符集"></a>设置字符集</h3><p>在配置文件最后添加以下内容：</p>
+<ul>
+<li>连接mysql时的字符集设置为utf8mb4<br>init-connect=’SET NAMES utf8mb4’</li>
+<li>默认存储引擎为INNODB<br>default-storage-engine=INNODB</li>
+<li>服务器端字符集设置为utf8mb4<br>character-set-server=utf8mb4<br>[mysql]</li>
+<li>mysql本身字符集设置为utf8mb4<br>default-character-set = utf8mb4<br>[client]</li>
+<li>客户端操作mysql时字符集设置为utf8mb4<br>default-character-set = utf8mb4</li>
+</ul>
+<blockquote>
+<p>工步他始能詩的，裝進分星海演意學值例道……於財型目古香亮自和這乎？化經溫詩。只賽嚴大一主價世哥受的沒有中年即病行金拉麼河。主小路了種就小為廣不？</p>
+</blockquote>
+</div></div><div class="post-main post-comment"></div></article><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+  $(".fancybox").fancybox();
+});
+</script></body></html>
