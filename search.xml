@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[PHP-javaScript-AES 对称加密]]></title>
     <url>%2F2019%2F03%2F15%2F2019-03-15-php-javascript-AES%20%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%2F</url>
-    <content type="text"><![CDATA[基于 Crypto.js 之 javaScript 加密，PHP解密。 (应用于登录注册)。 javaScript]]></content>
+    <content type="text"><![CDATA[基于 Crypto.js 之 javaScript 加密，PHP解密。 (应用于登录注册)。前端后台数据交互需要进行加密之后传输使用，以保证系统数据的安全。 javaScript1234567891011121314151617&lt;script src=&quot;../node_modules/_crypto-js@3.1.9-1@crypto-js/crypto-js.js&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text/javascript&quot;&gt; var password = &apos;123456&apos;; var aes_password = encrypt(password); // aes_password 加密后的数据 function encrypt(text)&#123; var key = CryptoJS.enc.Latin1.parse(&apos;AQSWDEFRGT@#$%^&amp;&apos;); //为了避免补位，直接用16位的秘钥 var iv = CryptoJS.enc.Latin1.parse(&apos;AQSWDE@#$%^&amp;FRGT&apos;); //16位初始向量 var encrypted = CryptoJS.AES.encrypt(text, key, &#123; iv: iv, mode:CryptoJS.mode.CBC, padding:CryptoJS.pad.ZeroPadding &#125;); return encrypted.toString(); &#125;&lt;/script&gt; PHP123$key = &quot;AQSWDEFRGT@#$%^&amp;&quot;;$iv = &quot;AQSWDE@#$%^&amp;FRGT&quot;;$password = openssl_decrypt($password, &apos;aes-128-cbc&apos;, $key, OPENSSL_ZERO_PADDING , $iv);]]></content>
       <categories>
         <category>PHP</category>
       </categories>
