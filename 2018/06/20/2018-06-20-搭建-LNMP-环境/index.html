@@ -108,7 +108,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/chidatian/chidatian.github.io/blob/master/pic/lnmp/apache_php.png">
 <meta property="og:image" content="https://github.com/chidatian/chidatian.github.io/blob/master/pic/lnmp/nginx_php.png">
-<meta property="og:updated_time" content="2019-03-16T11:01:12.975Z">
+<meta property="og:updated_time" content="2019-03-18T01:47:32.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建-LNMP-环境">
 <meta name="twitter:description" content="LNMP : linux + nginx1 + mysql5 + php7">
@@ -434,7 +434,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-16 19:01:12" itemprop="dateModified" datetime="2019-03-16T19:01:12+08:00">2019-03-16</time>
+                <time title="修改时间：2019-03-18 09:47:32" itemprop="dateModified" datetime="2019-03-18T09:47:32+08:00">2019-03-18</time>
               
             
           </span>
@@ -488,7 +488,7 @@
       
         <p>LNMP : linux + nginx1 + mysql5 + php7</p>
 <a id="more"></a>
-<h3 id="依赖文件"><a href="#依赖文件" class="headerlink" title="依赖文件"></a>依赖文件</h3><blockquote>
+<h2 id="依赖文件"><a href="#依赖文件" class="headerlink" title="依赖文件"></a>依赖文件</h2><blockquote>
 <p>我们后边要安装的php、apache、mysql等相关的软件，这些软件都是通过C语言或C++语言编写的，因此需要安装gcc和gcc-c++编译器。</p>
 </blockquote>
 <blockquote>
@@ -579,15 +579,15 @@
 <h3 id="制作php-ini文件"><a href="#制作php-ini文件" class="headerlink" title="制作php.ini文件"></a>制作php.ini文件</h3><p>在php解压目录里边把php.ini-development 复制到/usr/local/php7.0/lib/php.ini</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] cp php.ini-development /usr/local/php7.0/lib/php.ini</span><br></pre></td></tr></table></figure>
 <h3 id="服务配置文件"><a href="#服务配置文件" class="headerlink" title="服务配置文件"></a>服务配置文件</h3><p>php是作为独立服务与nginx进行合作工作的，现在需要给“php服务”创建配置文件</p>
-<h5 id="创建主配置文件"><a href="#创建主配置文件" class="headerlink" title="创建主配置文件"></a>创建主配置文件</h5><blockquote>
+<h4 id="创建主配置文件"><a href="#创建主配置文件" class="headerlink" title="创建主配置文件"></a>创建主配置文件</h4><blockquote>
 <p>把php-fpm.conf.default文件复制到当前目录并改名字为php-fpm.conf，这个文件就是“php服务”的主配置文件</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] pwd</span><br><span class="line">/usr/local/php7.0/etc</span><br><span class="line">[root@localhost ~] cp php-fpm.conf.default php-fpm.conf</span><br></pre></td></tr></table></figure>
-<h5 id="辅助配置文件"><a href="#辅助配置文件" class="headerlink" title="辅助配置文件"></a>辅助配置文件</h5><blockquote>
+<h4 id="辅助配置文件"><a href="#辅助配置文件" class="headerlink" title="辅助配置文件"></a>辅助配置文件</h4><blockquote>
 <p>/usr/local/php7.0/etc/php-fpm.d/<a href="http://www.conf.default" target="_blank" rel="noopener">www.conf.default</a> 辅助配置文件<br>在“辅助配置文件”中有“php服务”运行的详细参数(例如服务的端口号码9000等)，只有被主配置文件引入后php服务才可以正常运行代表对辅助配置文件进行引入，但是辅助配置文件需要改名字为.conf后缀的</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~] pwd</span><br><span class="line">/usr/local/php7.0/etc/php-fpm.d</span><br><span class="line">[root@localhost ~] cp www.conf.default www.conf</span><br></pre></td></tr></table></figure>
-<h5 id="服务控制"><a href="#服务控制" class="headerlink" title="服务控制"></a>服务控制</h5><ul>
+<h4 id="服务控制"><a href="#服务控制" class="headerlink" title="服务控制"></a>服务控制</h4><ul>
 <li>php-fpm            启动</li>
 <li>killall php-fpm     关闭</li>
 </ul>
@@ -738,7 +738,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -759,7 +759,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -790,7 +792,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -828,7 +832,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖文件"><span class="nav-number">1.</span> <span class="nav-text">依赖文件</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Nginx"><span class="nav-number"></span> <span class="nav-text">安装 Nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载-nginx"><span class="nav-number">1.</span> <span class="nav-text">下载 nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖文件-解压-安装"><span class="nav-number">2.</span> <span class="nav-text">依赖文件(解压, 安装)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-install"><span class="nav-number">3.</span> <span class="nav-text">nginx install</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-目录"><span class="nav-number">4.</span> <span class="nav-text">nginx 目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制服务"><span class="nav-number">5.</span> <span class="nav-text">控制服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#防火墙"><span class="nav-number">6.</span> <span class="nav-text">防火墙</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-PHP"><span class="nav-number"></span> <span class="nav-text">安装 PHP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-依赖"><span class="nav-number">1.</span> <span class="nav-text">安装 依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php-install"><span class="nav-number">2.</span> <span class="nav-text">php install</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php-目录"><span class="nav-number">3.</span> <span class="nav-text">php 目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-详解"><span class="nav-number">4.</span> <span class="nav-text">参数 详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#制作php-ini文件"><span class="nav-number">5.</span> <span class="nav-text">制作php.ini文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务配置文件"><span class="nav-number">6.</span> <span class="nav-text">服务配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建主配置文件"><span class="nav-number">6.0.1.</span> <span class="nav-text">创建主配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#辅助配置文件"><span class="nav-number">6.0.2.</span> <span class="nav-text">辅助配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#服务控制"><span class="nav-number">6.0.3.</span> <span class="nav-text">服务控制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx与php结合"><span class="nav-number"></span> <span class="nav-text">nginx与php结合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-MySQL"><span class="nav-number"></span> <span class="nav-text">安装 MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载旧的-MySQL-同apache"><span class="nav-number">1.</span> <span class="nav-text">卸载旧的 MySQL, 同apache</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载mysql组件"><span class="nav-number">2.</span> <span class="nav-text">下载mysql组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL-install"><span class="nav-number">3.</span> <span class="nav-text">MySQL install</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务控制-1"><span class="nav-number">4.</span> <span class="nav-text">服务控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看默认的root帐号密码"><span class="nav-number">5.</span> <span class="nav-text">查看默认的root帐号密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改root帐号密码"><span class="nav-number">6.</span> <span class="nav-text">修改root帐号密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置字符集"><span class="nav-number">7.</span> <span class="nav-text">设置字符集</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖文件"><span class="nav-number">1.</span> <span class="nav-text">依赖文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Nginx"><span class="nav-number">2.</span> <span class="nav-text">安装 Nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载-nginx"><span class="nav-number">2.1.</span> <span class="nav-text">下载 nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖文件-解压-安装"><span class="nav-number">2.2.</span> <span class="nav-text">依赖文件(解压, 安装)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-install"><span class="nav-number">2.3.</span> <span class="nav-text">nginx install</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-目录"><span class="nav-number">2.4.</span> <span class="nav-text">nginx 目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制服务"><span class="nav-number">2.5.</span> <span class="nav-text">控制服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#防火墙"><span class="nav-number">2.6.</span> <span class="nav-text">防火墙</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-PHP"><span class="nav-number">3.</span> <span class="nav-text">安装 PHP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-依赖"><span class="nav-number">3.1.</span> <span class="nav-text">安装 依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php-install"><span class="nav-number">3.2.</span> <span class="nav-text">php install</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php-目录"><span class="nav-number">3.3.</span> <span class="nav-text">php 目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-详解"><span class="nav-number">3.4.</span> <span class="nav-text">参数 详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#制作php-ini文件"><span class="nav-number">3.5.</span> <span class="nav-text">制作php.ini文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务配置文件"><span class="nav-number">3.6.</span> <span class="nav-text">服务配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建主配置文件"><span class="nav-number">3.6.1.</span> <span class="nav-text">创建主配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#辅助配置文件"><span class="nav-number">3.6.2.</span> <span class="nav-text">辅助配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务控制"><span class="nav-number">3.6.3.</span> <span class="nav-text">服务控制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx与php结合"><span class="nav-number">4.</span> <span class="nav-text">nginx与php结合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-MySQL"><span class="nav-number">5.</span> <span class="nav-text">安装 MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载旧的-MySQL-同apache"><span class="nav-number">5.1.</span> <span class="nav-text">卸载旧的 MySQL, 同apache</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载mysql组件"><span class="nav-number">5.2.</span> <span class="nav-text">下载mysql组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL-install"><span class="nav-number">5.3.</span> <span class="nav-text">MySQL install</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务控制-1"><span class="nav-number">5.4.</span> <span class="nav-text">服务控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看默认的root帐号密码"><span class="nav-number">5.5.</span> <span class="nav-text">查看默认的root帐号密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改root帐号密码"><span class="nav-number">5.6.</span> <span class="nav-text">修改root帐号密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置字符集"><span class="nav-number">5.7.</span> <span class="nav-text">设置字符集</span></a></li></ol></li></ol></div>
             
 
           </div>

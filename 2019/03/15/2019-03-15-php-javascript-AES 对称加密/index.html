@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Tian.js">
 <meta property="og:description" content="基于 Crypto.js 之 javaScript 加密，PHP解密。 (应用于登录注册)。前端后台数据交互需要进行加密之后传输使用，以保证系统数据的安全。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-17T11:03:38.390Z">
+<meta property="og:updated_time" content="2019-03-18T01:13:16.035Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP-javaScript-AES 对称加密">
 <meta name="twitter:description" content="基于 Crypto.js 之 javaScript 加密，PHP解密。 (应用于登录注册)。前端后台数据交互需要进行加密之后传输使用，以保证系统数据的安全。">
@@ -431,7 +431,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-17 19:03:38" itemprop="dateModified" datetime="2019-03-17T19:03:38+08:00">2019-03-17</time>
+                <time title="修改时间：2019-03-18 09:13:16" itemprop="dateModified" datetime="2019-03-18T09:13:16+08:00">2019-03-18</time>
               
             
           </span>
@@ -487,6 +487,7 @@
 <a id="more"></a>
 <h3 id="javaScript"><a href="#javaScript" class="headerlink" title="javaScript"></a>javaScript</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;../node_modules/_crypto-js@3.1.9-1@crypto-js/crypto-js.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">	var password = &apos;123456&apos;;</span><br><span class="line">	var aes_password = encrypt(password);</span><br><span class="line">	// aes_password 加密后的数据</span><br><span class="line">	</span><br><span class="line">	function encrypt(text)&#123;</span><br><span class="line">		var key = CryptoJS.enc.Latin1.parse(&apos;AQSWDEFRGT@#$%^&amp;&apos;); //为了避免补位，直接用16位的秘钥</span><br><span class="line">		var iv  = CryptoJS.enc.Latin1.parse(&apos;AQSWDE@#$%^&amp;FRGT&apos;); //16位初始向量</span><br><span class="line">		var encrypted = CryptoJS.AES.encrypt(text, key, &#123;</span><br><span class="line">			iv: iv,</span><br><span class="line">			mode:CryptoJS.mode.CBC,</span><br><span class="line">			padding:CryptoJS.pad.ZeroPadding</span><br><span class="line">		&#125;);</span><br><span class="line">		return encrypted.toString();</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$key = &quot;AQSWDEFRGT@#$%^&amp;&quot;;</span><br><span class="line">$iv = &quot;AQSWDE@#$%^&amp;FRGT&quot;;</span><br><span class="line">$password = openssl_decrypt($password, &apos;aes-128-cbc&apos;, $key, OPENSSL_ZERO_PADDING , $iv);</span><br></pre></td></tr></table></figure>
+<h3 id="Crypto-js"><a href="#Crypto-js" class="headerlink" title="Crypto.js"></a>Crypto.js</h3>
       
     </div>
 
@@ -535,6 +536,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/18/2019-03-18-PHP 数据类型/" rel="prev" title="PHP 数据类型">
+                PHP 数据类型 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -605,7 +610,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -626,7 +631,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -657,7 +664,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -695,7 +704,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#javaScript"><span class="nav-number">1.</span> <span class="nav-text">javaScript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP"><span class="nav-number">2.</span> <span class="nav-text">PHP</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#javaScript"><span class="nav-number">1.</span> <span class="nav-text">javaScript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP"><span class="nav-number">2.</span> <span class="nav-text">PHP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Crypto-js"><span class="nav-number">3.</span> <span class="nav-text">Crypto.js</span></a></li></ol></div>
             
 
           </div>
