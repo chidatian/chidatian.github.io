@@ -98,25 +98,25 @@
 
 
 
-  <meta name="description" content="PHP 支持 9 种原始数据类型。四种标量类型：boolean（布尔型）integer（整型）float（浮点型，也称作 double)string（字符串）三种复合类型：array（数组）object（对象）callable（可调用）最后是两种特殊类型：resource（资源）NULL（无类型）伪类型：mixed（混合类型）number（数字类型）callback（回调类型，又称为 callab">
-<meta name="keywords" content="PHP">
+  <meta name="description" content="Go 语言实现 二叉查找树。 日常笔记。原文">
+<meta name="keywords" content="Go,struct">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PHP 数据类型">
-<meta property="og:url" content="http://yoursite.com/2019/03/18/2019-03-18-PHP 数据类型/index.html">
+<meta property="og:title" content="二叉查找树">
+<meta property="og:url" content="http://yoursite.com/2019/03/23/2019-03-23-二叉查找树/index.html">
 <meta property="og:site_name" content="Tian.js">
-<meta property="og:description" content="PHP 支持 9 种原始数据类型。四种标量类型：boolean（布尔型）integer（整型）float（浮点型，也称作 double)string（字符串）三种复合类型：array（数组）object（对象）callable（可调用）最后是两种特殊类型：resource（资源）NULL（无类型）伪类型：mixed（混合类型）number（数字类型）callback（回调类型，又称为 callab">
+<meta property="og:description" content="Go 语言实现 二叉查找树。 日常笔记。原文">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-18T08:03:44.886Z">
+<meta property="og:updated_time" content="2019-03-23T13:29:17.898Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PHP 数据类型">
-<meta name="twitter:description" content="PHP 支持 9 种原始数据类型。四种标量类型：boolean（布尔型）integer（整型）float（浮点型，也称作 double)string（字符串）三种复合类型：array（数组）object（对象）callable（可调用）最后是两种特殊类型：resource（资源）NULL（无类型）伪类型：mixed（混合类型）number（数字类型）callback（回调类型，又称为 callab">
+<meta name="twitter:title" content="二叉查找树">
+<meta name="twitter:description" content="Go 语言实现 二叉查找树。 日常笔记。原文">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/18/2019-03-18-PHP 数据类型/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/23/2019-03-23-二叉查找树/">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>PHP 数据类型 | Tian.js</title>
+  <title>二叉查找树 | Tian.js</title>
   
 
 
@@ -371,7 +371,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/18/2019-03-18-PHP 数据类型/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/23/2019-03-23-二叉查找树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chidatian">
@@ -388,7 +388,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">PHP 数据类型
+          <h1 class="post-title" itemprop="name headline">二叉查找树
 
               
             
@@ -414,7 +414,7 @@
                 
               
 
-              <time title="创建时间：2019-03-18 10:36:00 / 修改时间：16:03:44" itemprop="dateCreated datePublished" datetime="2019-03-18T10:36:00+08:00">2019-03-18</time>
+              <time title="创建时间：2019-03-23 10:36:00 / 修改时间：21:29:17" itemprop="dateCreated datePublished" datetime="2019-03-23T10:36:00+08:00">2019-03-23</time>
             
 
             
@@ -436,7 +436,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a></span>
 
                 
                 
@@ -471,20 +471,20 @@
       
 
       
-        <p>PHP 支持 9 种原始数据类型。<strong>四种标量类型</strong>：boolean（布尔型）integer（整型）float（浮点型，也称作 double)string（字符串）<strong>三种复合类型</strong>：array（数组）object（对象）callable（可调用）<strong>最后是两种特殊类型</strong>：resource（资源）NULL（无类型）<br><strong>伪类型</strong>：mixed（混合类型）number（数字类型）callback（回调类型，又称为 callable）array|object（数组 | 对象类型）void （无类型）</p>
+        <p>Go 语言实现 二叉查找树。 日常笔记。<a href="https://www.cnblogs.com/yangecnu/p/Introduce-Binary-Search-Tree.html" target="_blank" rel="noopener">原文</a></p>
 <a id="more"></a>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>变量的类型通常不是由程序员设定的，是由 PHP 根据该变量使用的上下文在运行时决定的。</p>
-<h3 id="boolean（布尔型）"><a href="#boolean（布尔型）" class="headerlink" title="boolean（布尔型）"></a>boolean（布尔型）</h3><p>要明确地将一个值转换成 boolean，用 (bool) 或者 (boolean) 来强制转换。但是很多情况下不需要用强制转换，因为当运算符，函数或者流程控制结构需要一个 boolean 参数时，该值会被自动转换。</p>
-<p><strong>当转换为 boolean 时，以下值被认为是 FALSE：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">布尔值 FALSE 本身</span><br><span class="line">整型值 0（零）</span><br><span class="line">浮点型值 0.0（零）</span><br><span class="line">空字符串，以及字符串 &quot;0&quot;</span><br><span class="line">不包括任何元素的数组</span><br><span class="line">特殊类型 NULL（包括尚未赋值的变量）</span><br><span class="line">从空标记生成的 SimpleXML 对象 (没有验证过 ...)</span><br></pre></td></tr></table></figure>
-<p><strong>例子</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var_dump(0 == &apos;all&apos;); // true</span><br><span class="line">var_dump((int)&apos;all&apos;); // int(0)</span><br><span class="line"></span><br><span class="line">var_dump(0 == (bool)&apos;all&apos;); // false</span><br><span class="line">var_dump((int)true); // int(1)</span><br></pre></td></tr></table></figure></p>
-<h3 id="integer（整型）"><a href="#integer（整型）" class="headerlink" title="integer（整型）"></a>integer（整型）</h3><p>整型值可以使用十进制，十六进制，八进制或二进制表示，前面可以加上可选的符号（- 或者 +）。要使用八进制表达，数字前必须加上 0（零）。要使用十六进制表达，数字前必须加上 0x。要使用二进制表达，数字前必须加上 0b。用 (int) 或 (integer) 强制转换。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var_dump(PHP_INT_SIZE); // 结果：int(4) // 占用4个字节</span><br><span class="line">var_dump(PHP_INT_NAX); // 结果：int(2147483647) // php中int不支持无符号</span><br><span class="line">var_dump(PHP_INT_MIN); // 结果：int(-2147483648)</span><br></pre></td></tr></table></figure>
-<p><strong>例子</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo (int) ( 1.6); // 显示 1  // 当从浮点数转换成整数时，将向下取整。</span><br><span class="line">echo (int)@NaN . PHP_EOL; // int(0) // PHP 7.0.0 起，NaN 和 Infinity 在转换成 integer 时，不再是 undefined 或者依赖于平台，而是都会变成零。</span><br><span class="line">echo (int) ( (0.1+0.7) * 10 ); // 显示 7 // 浮点数强制转换 integer，会出现不可预料的错误</span><br></pre></td></tr></table></figure></p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>二叉查找树（Binary Search Tree），也称有序二叉树（ordered binary tree）,排序二叉树（sorted binary tree），是指一棵空树或者具有下列性质的二叉树：</p>
 <blockquote>
-<p>待验证：在32位平台上int占4个字节，在64位平台上int占8个字节,16位平台是则分配2个字节<br>整型数的字长和平台有关，尽管通常最大值是大约二十亿（32 位有符号）。64 位平台下的最大值通常是大约 9E18，除了 Windows 下 PHP 7 以前的版本，总是 32 位的。 PHP 不支持无符号的 integer。Integer 值的字长可以用常量 PHP_INT_SIZE来表示，自 PHP 4.4.0 和 PHP 5.0.5后，最大值可以用常量 PHP_INT_MAX 来表示，最小值可以在 PHP 7.0.0 及以后的版本中用常量 PHP_INT_MIN 表示。</p>
+<p>若任意节点的左子树不空，则左子树上所有结点的值均小于它的根结点的值；<br>若任意节点的右子树不空，则右子树上所有结点的值均大于它的根结点的值；<br>任意节点的左、右子树也分别为二叉查找树。<br>没有键值相等的节点（no duplicate nodes）。</p>
 </blockquote>
-<h3 id="float（浮点型，也称作-double"><a href="#float（浮点型，也称作-double" class="headerlink" title="float（浮点型，也称作 double)"></a>float（浮点型，也称作 double)</h3>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h4 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 二叉查找树</span><br><span class="line">type Tree struct &#123;</span><br><span class="line">	Root *Node</span><br><span class="line">&#125;</span><br><span class="line">// 结点</span><br><span class="line">type Node struct &#123;</span><br><span class="line">	Value int</span><br><span class="line">	Left *Node</span><br><span class="line">	Right *Node</span><br><span class="line">	Parent *Node</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="添加一个结点"><a href="#添加一个结点" class="headerlink" title="添加一个结点"></a>添加一个结点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">func (this *Tree) Insert(v int) &#123;</span><br><span class="line">	n := new(Node)</span><br><span class="line">	n.Value = v</span><br><span class="line">	if this.Root == nil &#123;</span><br><span class="line">		this.Root = n</span><br><span class="line">		return</span><br><span class="line">	&#125;</span><br><span class="line">	cur := this.Root</span><br><span class="line">	for &#123;</span><br><span class="line">		n.Parent = cur</span><br><span class="line">		if v &lt; cur.Value &#123;</span><br><span class="line">			if cur.Left == nil &#123;</span><br><span class="line">				cur.Left = n</span><br><span class="line">				break</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				cur = cur.Left</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			if cur.Right == nil &#123;</span><br><span class="line">				cur.Right = n</span><br><span class="line">				break</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				cur = cur.Right</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="遍历树"><a href="#遍历树" class="headerlink" title="遍历树"></a>遍历树</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">func (this *Tree) Select() &#123;</span><br><span class="line">	var mapSearch func(n *Node)</span><br><span class="line">	mapSearch = func(n *Node)&#123;</span><br><span class="line">		if n != nil &#123;</span><br><span class="line">			mapSearch(n.Left)</span><br><span class="line">			fmt.Println(n.Value)</span><br><span class="line">			mapSearch(n.Right)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	mapSearch(this.Root)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="查找一个结点"><a href="#查找一个结点" class="headerlink" title="查找一个结点"></a>查找一个结点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">func (this *Tree) Search(v int) *Node&#123;</span><br><span class="line">	cur := this.Root</span><br><span class="line">	for &#123;</span><br><span class="line">		if v &lt; cur.Value &#123;</span><br><span class="line">			cur = cur.Left</span><br><span class="line">			if cur == nil &#123;</span><br><span class="line">				return nil</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; else if v &gt; cur.Value &#123;</span><br><span class="line">			cur = cur.Right</span><br><span class="line">			if cur == nil &#123;</span><br><span class="line">				return nil</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			return cur</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="最小结点"><a href="#最小结点" class="headerlink" title="最小结点"></a>最小结点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">func (this *Tree) Min() *Node&#123;</span><br><span class="line">	cur := this.Root</span><br><span class="line">	for &#123;</span><br><span class="line">		if cur.Left != nil &#123;</span><br><span class="line">			cur = cur.Left</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			return cur</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="最大结点"><a href="#最大结点" class="headerlink" title="最大结点"></a>最大结点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">func (this *Tree) Max() *Node&#123;</span><br><span class="line">	cur := this.Root</span><br><span class="line">	for &#123;</span><br><span class="line">		if cur.Right != nil &#123;</span><br><span class="line">			cur = cur.Right</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			return cur</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="删除一个结点"><a href="#删除一个结点" class="headerlink" title="删除一个结点"></a>删除一个结点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">func (this *Tree) Delete(v int) &#123;</span><br><span class="line">	fmt.Printf(&quot;del: %d\n&quot;,v)</span><br><span class="line">	var (</span><br><span class="line">		mapDel func (n *Node)</span><br><span class="line">		cur = this.Search(v)</span><br><span class="line">	)</span><br><span class="line">	mapDel = func (cur *Node) &#123;</span><br><span class="line">		if cur == nil &#123;</span><br><span class="line">			return</span><br><span class="line">		&#125;</span><br><span class="line">		if cur.Left == nil &amp;&amp; cur.Right == nil &#123;</span><br><span class="line">			if cur.Parent.Left == cur &#123;</span><br><span class="line">				cur.Parent.Left = nil</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				cur.Parent.Right = nil</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; else if cur.Left == nil &amp;&amp; cur.Right != nil &#123;</span><br><span class="line">			cur.Right.Parent = cur.Parent</span><br><span class="line">			if cur.Parent.Left == cur &#123;</span><br><span class="line">				cur.Parent.Left = cur.Right</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				cur.Parent.Right = cur.Right</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; else if cur.Left != nil &amp;&amp; cur.Right == nil &#123;</span><br><span class="line">			cur.Left.Parent = cur.Parent</span><br><span class="line">			if cur.Parent.Left == cur &#123;</span><br><span class="line">				cur.Parent.Left = cur.Left</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				cur.Parent.Right = cur.Left</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			fmt.Println(&quot;both&quot;)</span><br><span class="line">			curs := cur.Right</span><br><span class="line">			for &#123;</span><br><span class="line">				if curs.Left != nil &#123;</span><br><span class="line">					curs = curs.Left</span><br><span class="line">				&#125; else &#123;</span><br><span class="line">					break</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			cur.Value = curs.Value</span><br><span class="line">			mapDel(curs)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	mapDel(cur)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">	var t Tree</span><br><span class="line">	t.Insert(100)</span><br><span class="line">	t.Insert(120)</span><br><span class="line">	t.Insert(80)</span><br><span class="line">	t.Insert(70)</span><br><span class="line">	t.Insert(90)</span><br><span class="line">	t.Insert(85)</span><br><span class="line">	t.Insert(95)</span><br><span class="line">	t.Insert(110)</span><br><span class="line">	t.Select()</span><br><span class="line">	t.Delete(80)</span><br><span class="line">	t.Select()</span><br><span class="line">	fmt.Println(&quot;---------------&quot;)</span><br><span class="line">	val := t.Search(110)</span><br><span class="line">	fmt.Println(val)</span><br><span class="line">	fmt.Println(t.Min())</span><br><span class="line">	fmt.Println(t.Root.Value)</span><br><span class="line">	fmt.Println(t.Root.Left.Value)</span><br><span class="line">	fmt.Println(t.Root.Right.Value)</span><br><span class="line">	t.Edit(80,125)</span><br><span class="line">	t.Select()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -507,7 +507,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/PHP/" rel="tag"># PHP</a>
+            <a href="/tags/Go/" rel="tag"># Go</a>
+          
+            <a href="/tags/struct/" rel="tag"># struct</a>
           
         </div>
       
@@ -520,8 +522,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/15/2019-04-09-PHP-javaScript-RSA 非对称加密/" rel="next" title="PHP-javaScript-RSA 非对称加密">
-                <i class="fa fa-chevron-left"></i> PHP-javaScript-RSA 非对称加密
+              <a href="/2019/03/18/2019-03-18-常用正则表达式/" rel="next" title="常用正则表达式">
+                <i class="fa fa-chevron-left"></i> 常用正则表达式
               </a>
             
           </div>
@@ -530,8 +532,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/18/2019-03-18-正则表达式/" rel="prev" title="正则表达式">
-                正则表达式 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/22/2019-04-22-Mysql 优化 (一)/" rel="prev" title="Mysql 优化 (一)">
+                Mysql 优化 (一) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -711,7 +713,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#boolean（布尔型）"><span class="nav-number">2.</span> <span class="nav-text">boolean（布尔型）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#integer（整型）"><span class="nav-number">3.</span> <span class="nav-text">integer（整型）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#float（浮点型，也称作-double"><span class="nav-number">4.</span> <span class="nav-text">float（浮点型，也称作 double)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现"><span class="nav-number">2.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#结构体"><span class="nav-number">2.1.</span> <span class="nav-text">结构体</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加一个结点"><span class="nav-number">2.2.</span> <span class="nav-text">添加一个结点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遍历树"><span class="nav-number">2.3.</span> <span class="nav-text">遍历树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查找一个结点"><span class="nav-number">2.4.</span> <span class="nav-text">查找一个结点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最小结点"><span class="nav-number">2.5.</span> <span class="nav-text">最小结点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最大结点"><span class="nav-number">2.6.</span> <span class="nav-text">最大结点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除一个结点"><span class="nav-number">2.7.</span> <span class="nav-text">删除一个结点</span></a></li></ol></li></ol></div>
             
 
           </div>
