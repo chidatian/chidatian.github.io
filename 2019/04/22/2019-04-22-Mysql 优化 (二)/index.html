@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Tian.js">
 <meta property="og:description" content="优化的方面  索引相关 分表设计 架构设计 慢查询日志收集 其他优化">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-29T07:14:09.615Z">
+<meta property="og:updated_time" content="2019-05-14T13:19:22.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql 优化 (二)">
 <meta name="twitter:description" content="优化的方面  索引相关 分表设计 架构设计 慢查询日志收集 其他优化">
@@ -431,7 +431,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-29 15:14:09" itemprop="dateModified" datetime="2019-04-29T15:14:09+08:00">2019-04-29</time>
+                <time title="修改时间：2019-05-14 21:19:22" itemprop="dateModified" datetime="2019-05-14T21:19:22+08:00">2019-05-14</time>
               
             
           </span>
@@ -502,6 +502,8 @@
 * 数据表创建完毕，要预估那些字段被经常使用，就给其创建索引
 </code></pre><p>执行<strong><em>时间长</em></strong>的sql语句考虑设计索引</p>
 <pre><code>* 可以利用”慢查询日志”收集这样的sql语句并优化设计索引
+* slow_query_log    ：是否开启慢查询日志，1表示开启，0表示关闭。
+* long_query_time:  什么样的SQL才会记录到慢查询日志里面呢？ 这个是由参数long_query_time控制
 </code></pre><p>逻辑非常<strong>重要的sql</strong>语句考虑设计索引</p>
 <pre><code>* 例如商城系统里边，会员给自己账户充值就比较重要
  * 还有会员下订单购物，进行付款的时候也比较重要。
@@ -574,7 +576,30 @@
 <h4 id="key-hash-删除分表"><a href="#key-hash-删除分表" class="headerlink" title="key, hash 删除分表"></a>key, hash 删除分表</h4><blockquote>
 <p>alter table 表名 coalesce partition 数量</p>
 </blockquote>
-<h3 id="物理分表"><a href="#物理分表" class="headerlink" title="物理分表"></a>物理分表</h3><h3 id="垂直分表"><a href="#垂直分表" class="headerlink" title="垂直分表"></a>垂直分表</h3>
+<h3 id="物理分表"><a href="#物理分表" class="headerlink" title="物理分表"></a>物理分表</h3><h3 id="垂直分表"><a href="#垂直分表" class="headerlink" title="垂直分表"></a>垂直分表</h3><h3 id="慢查询日志收集"><a href="#慢查询日志收集" class="headerlink" title="慢查询日志收集"></a>慢查询日志收集</h3><p><code>slow_query_log</code>    ：是否开启慢查询日志，1表示开启，0表示关闭。<br><code>log-slow-queries</code>  ：旧版（5.6以下版本）MySQL数据库慢查询日志存储路径。可以不设置该参数，系统则会默认给一个缺省的文件host_name-slow.log<br><code>slow-query-log-file</code>：新版（5.6及以上版本）MySQL数据库慢查询日志存储路径。可以不设置该参数，系统则会默认给一个缺省的文件host_name-slow.log<br><code>long_query_time</code> ：慢查询阈值，当查询时间多于设定的阈值时，记录日志。<br><code>log_queries_not_using_indexes</code>：未使用索引的查询也被记录到慢查询日志中（可选项）。<br><code>log_output</code>：日志存储方式。log_output=’FILE’表示将日志存入文件，默认值是’FILE’。log_output=’TABLE’表示将日志存入数据库，这样日志信息就会被写入到mysql.slow_log表中。MySQL数据库支持同时两种日志存储方式，配置的时候以逗号隔开即可，如：log_output=’FILE,TABLE’。日志记录到系统的专用日志表中，要比记录到文件耗费更多的系统资源，因此对于需要启用慢查询日志，又需要能够获得更高的系统性能，那么建议优先记录到文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show variables like &apos;%slow_query_log%&apos;;</span><br><span class="line">set global slow_query_log=1;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用set global slow_query_log=1开启了慢查询日志只对当前数据库生效，MySQL重启后则会失效。如果要永久生效，就必须修改配置文件my.cnf（其它系统变量也是如此）<br>修改my.cnf文件，增加或修改参数slow_query_log 和slow_query_log_file后，然后重启MySQL服务器</p>
+</blockquote>
+<h4 id="日志分析工具mysqldumpslow"><a href="#日志分析工具mysqldumpslow" class="headerlink" title="日志分析工具mysqldumpslow"></a>日志分析工具mysqldumpslow</h4><p><code>mysqldumpslow --help</code></p>
+<p>-s, 是表示按照何种方式排序<br>    c: 访问计数</p>
+<pre><code>l: 锁定时间
+
+r: 返回记录
+
+t: 查询时间
+
+al:平均锁定时间
+
+ar:平均返回记录数
+
+at:平均查询时间
+</code></pre><p>-t, 是top n的意思，即为返回前面多少条的数据；<br>-g, 后边可以写一个正则匹配模式，大小写不敏感的；</p>
+<p>比如:<br>得到返回记录集最多的10个SQL。<br>mysqldumpslow -s r -t 10 /database/mysql/mysql06_slow.log</p>
+<p>得到访问次数最多的10个SQL<br>mysqldumpslow -s c -t 10 /database/mysql/mysql06_slow.log</p>
+<p>得到按照时间排序的前10条里面含有左连接的查询语句。<br>mysqldumpslow -s t -t 10 -g “left join” /database/mysql/mysql06_slow.log</p>
+<p>另外建议在使用这些命令时结合 | 和more 使用 ，否则有可能出现刷屏的情况。<br>mysqldumpslow -s r -t 20 /mysqldata/mysql/mysql06-slow.log | more</p>
+
       
     </div>
 
@@ -807,7 +832,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Index"><span class="nav-number">1.</span> <span class="nav-text">Index</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#规则"><span class="nav-number">1.1.</span> <span class="nav-text">规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设计依据"><span class="nav-number">1.2.</span> <span class="nav-text">设计依据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前缀索引"><span class="nav-number">2.</span> <span class="nav-text">前缀索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全文索引"><span class="nav-number">3.</span> <span class="nav-text">全文索引</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#全文索引注意"><span class="nav-number">3.1.</span> <span class="nav-text">全文索引注意</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引结构"><span class="nav-number">4.</span> <span class="nav-text">索引结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分表设计"><span class="nav-number">5.</span> <span class="nav-text">分表设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑分表"><span class="nav-number">6.</span> <span class="nav-text">逻辑分表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#range-分表-范围方式"><span class="nav-number">6.1.</span> <span class="nav-text">range 分表 [范围方式]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#range-添加分表"><span class="nav-number">6.2.</span> <span class="nav-text">range 添加分表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list-分表-范围方式"><span class="nav-number">6.3.</span> <span class="nav-text">list 分表 [范围方式]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list-添加分表"><span class="nav-number">6.4.</span> <span class="nav-text">list 添加分表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#range-list-删除分表"><span class="nav-number">6.5.</span> <span class="nav-text">range, list 删除分表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#key-分表-求余方式"><span class="nav-number">6.6.</span> <span class="nav-text">key 分表 [求余方式]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hash-分表-求余方式"><span class="nav-number">6.7.</span> <span class="nav-text">hash 分表 [求余方式]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#key-hash-添加分表"><span class="nav-number">6.8.</span> <span class="nav-text">key, hash 添加分表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#key-hash-删除分表"><span class="nav-number">6.9.</span> <span class="nav-text">key, hash 删除分表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理分表"><span class="nav-number">7.</span> <span class="nav-text">物理分表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垂直分表"><span class="nav-number">8.</span> <span class="nav-text">垂直分表</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Index"><span class="nav-number">1.</span> <span class="nav-text">Index</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#规则"><span class="nav-number">1.1.</span> <span class="nav-text">规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设计依据"><span class="nav-number">1.2.</span> <span class="nav-text">设计依据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前缀索引"><span class="nav-number">2.</span> <span class="nav-text">前缀索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全文索引"><span class="nav-number">3.</span> <span class="nav-text">全文索引</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#全文索引注意"><span class="nav-number">3.1.</span> <span class="nav-text">全文索引注意</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引结构"><span class="nav-number">4.</span> <span class="nav-text">索引结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分表设计"><span class="nav-number">5.</span> <span class="nav-text">分表设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑分表"><span class="nav-number">6.</span> <span class="nav-text">逻辑分表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#range-分表-范围方式"><span class="nav-number">6.1.</span> <span class="nav-text">range 分表 [范围方式]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#range-添加分表"><span class="nav-number">6.2.</span> <span class="nav-text">range 添加分表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list-分表-范围方式"><span class="nav-number">6.3.</span> <span class="nav-text">list 分表 [范围方式]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list-添加分表"><span class="nav-number">6.4.</span> <span class="nav-text">list 添加分表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#range-list-删除分表"><span class="nav-number">6.5.</span> <span class="nav-text">range, list 删除分表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#key-分表-求余方式"><span class="nav-number">6.6.</span> <span class="nav-text">key 分表 [求余方式]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hash-分表-求余方式"><span class="nav-number">6.7.</span> <span class="nav-text">hash 分表 [求余方式]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#key-hash-添加分表"><span class="nav-number">6.8.</span> <span class="nav-text">key, hash 添加分表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#key-hash-删除分表"><span class="nav-number">6.9.</span> <span class="nav-text">key, hash 删除分表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理分表"><span class="nav-number">7.</span> <span class="nav-text">物理分表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垂直分表"><span class="nav-number">8.</span> <span class="nav-text">垂直分表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#慢查询日志收集"><span class="nav-number">9.</span> <span class="nav-text">慢查询日志收集</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#日志分析工具mysqldumpslow"><span class="nav-number">9.1.</span> <span class="nav-text">日志分析工具mysqldumpslow</span></a></li></ol></li></ol></div>
             
 
           </div>
