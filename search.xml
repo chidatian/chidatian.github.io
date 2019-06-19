@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>数据结构</title>
+      <link href="/2019/06/11/2019-06-11-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <url>/2019/06/11/2019-06-11-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
+      
+        <content type="html"><![CDATA[<p>日常数据结构整理。</p><a id="more"></a><h3 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h3><h3 id="树"><a href="#树" class="headerlink" title="树"></a>树</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> struct </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> struct </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>日常 Vue.js 笔记</title>
       <link href="/2019/05/15/2019-05-15-%E6%97%A5%E5%B8%B8%20Vue.js%20%E7%AC%94%E8%AE%B0/"/>
       <url>/2019/05/15/2019-05-15-%E6%97%A5%E5%B8%B8%20Vue.js%20%E7%AC%94%E8%AE%B0/</url>
@@ -131,31 +156,6 @@
     
     
     <entry>
-      <title>PHP 数据类型</title>
-      <link href="/2019/03/18/2019-03-18-PHP%20%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
-      <url>/2019/03/18/2019-03-18-PHP%20%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
-      
-        <content type="html"><![CDATA[<p>PHP 支持 9 种原始数据类型。<strong>四种标量类型</strong>：boolean（布尔型）integer（整型）float（浮点型，也称作 double)string（字符串）<strong>三种复合类型</strong>：array（数组）object（对象）callable（可调用）<strong>最后是两种特殊类型</strong>：resource（资源）NULL（无类型）<br><strong>伪类型</strong>：mixed（混合类型）number（数字类型）callback（回调类型，又称为 callable）array|object（数组 | 对象类型）void （无类型）</p><a id="more"></a><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>变量的类型通常不是由程序员设定的，是由 PHP 根据该变量使用的上下文在运行时决定的。</p><h3 id="boolean（布尔型）"><a href="#boolean（布尔型）" class="headerlink" title="boolean（布尔型）"></a>boolean（布尔型）</h3><p>要明确地将一个值转换成 boolean，用 (bool) 或者 (boolean) 来强制转换。但是很多情况下不需要用强制转换，因为当运算符，函数或者流程控制结构需要一个 boolean 参数时，该值会被自动转换。</p><p><strong>当转换为 boolean 时，以下值被认为是 FALSE：</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">布尔值 FALSE 本身</span><br><span class="line">整型值 0（零）</span><br><span class="line">浮点型值 0.0（零）</span><br><span class="line">空字符串，以及字符串 &quot;0&quot;</span><br><span class="line">不包括任何元素的数组</span><br><span class="line">特殊类型 NULL（包括尚未赋值的变量）</span><br><span class="line">从空标记生成的 SimpleXML 对象 (没有验证过 ...)</span><br></pre></td></tr></table></figure><p><strong>例子</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var_dump(0 == &apos;all&apos;); // true</span><br><span class="line">var_dump((int)&apos;all&apos;); // int(0)</span><br><span class="line"></span><br><span class="line">var_dump(0 == (bool)&apos;all&apos;); // false</span><br><span class="line">var_dump((int)true); // int(1)</span><br></pre></td></tr></table></figure></p><h3 id="integer（整型）"><a href="#integer（整型）" class="headerlink" title="integer（整型）"></a>integer（整型）</h3><p>整型值可以使用十进制，十六进制，八进制或二进制表示，前面可以加上可选的符号（- 或者 +）。要使用八进制表达，数字前必须加上 0（零）。要使用十六进制表达，数字前必须加上 0x。要使用二进制表达，数字前必须加上 0b。用 (int) 或 (integer) 强制转换。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var_dump(PHP_INT_SIZE); // 结果：int(4) // 占用4个字节</span><br><span class="line">var_dump(PHP_INT_NAX); // 结果：int(2147483647) // php中int不支持无符号</span><br><span class="line">var_dump(PHP_INT_MIN); // 结果：int(-2147483648)</span><br></pre></td></tr></table></figure><p><strong>例子</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo (int) ( 1.6); // 显示 1  // 当从浮点数转换成整数时，将向下取整。</span><br><span class="line">echo (int)@NaN . PHP_EOL; // int(0) // PHP 7.0.0 起，NaN 和 Infinity 在转换成 integer 时，不再是 undefined 或者依赖于平台，而是都会变成零。</span><br><span class="line">echo (int) ( (0.1+0.7) * 10 ); // 显示 7 // 浮点数强制转换 integer，会出现不可预料的错误</span><br></pre></td></tr></table></figure></p><blockquote><p>待验证：在32位平台上int占4个字节，在64位平台上int占8个字节,16位平台是则分配2个字节<br>整型数的字长和平台有关，尽管通常最大值是大约二十亿（32 位有符号）。64 位平台下的最大值通常是大约 9E18，除了 Windows 下 PHP 7 以前的版本，总是 32 位的。 PHP 不支持无符号的 integer。Integer 值的字长可以用常量 PHP_INT_SIZE来表示，自 PHP 4.4.0 和 PHP 5.0.5后，最大值可以用常量 PHP_INT_MAX 来表示，最小值可以在 PHP 7.0.0 及以后的版本中用常量 PHP_INT_MIN 表示。</p></blockquote><h3 id="float（浮点型，也称作-double"><a href="#float（浮点型，也称作-double" class="headerlink" title="float（浮点型，也称作 double)"></a>float（浮点型，也称作 double)</h3>]]></content>
-      
-      
-      <categories>
-          
-          <category> PHP </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> PHP </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>常用正则表达式</title>
       <link href="/2019/03/18/2019-03-18-%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
       <url>/2019/03/18/2019-03-18-%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
@@ -189,7 +189,7 @@
       <link href="/2019/03/18/2019-03-18-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
       <url>/2019/03/18/2019-03-18-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
       
-        <content type="html"><![CDATA[<p>常用正则汇总。</p><a id="more"></a><h1 id="模式匹配修饰符"><a href="#模式匹配修饰符" class="headerlink" title="模式匹配修饰符"></a>模式匹配修饰符</h1><p>i    忽略模式中的大小写<br>m     多行模式<br>o    仅赋值一次<br>s    单行模式，”.”匹配”\n”（默认不匹配）<br>x    忽略模式中的空白<br>g    全局匹配<br>cg    全局匹配失败后，允许再次查找匹配串</p><h1 id="替换操作修饰符"><a href="#替换操作修饰符" class="headerlink" title="替换操作修饰符"></a>替换操作修饰符</h1><p>i    如果在修饰符中加上”i”，则正则将会取消大小写敏感性，即”a”和”A” 是一样的。<br>m    默认的正则开始”^”和结束”$”只是对于正则字符串如果在修饰符中加上”m”，那么开始和结束将会指字符串的每一行：每一行的开头就是”^”，结尾就是”$”。<br>o    表达式只执行一次。<br>s    如果在修饰符中加入”s”，那么默认的”.”代表除了换行符以外的任何字符将会变成任意字符，也就是包括换行符！<br>x    如果加上该修饰符，表达式中的空白字符将会被忽略，除非它已经被转义。<br>g    替换所有匹配的字符串。<br>e    替换字符串作为表达式</p><h1 id="转化操作符"><a href="#转化操作符" class="headerlink" title="转化操作符"></a>转化操作符</h1><p>c    转化所有未指定字符<br>d    删除所有指定字符<br>s    把多个相同的输出字符缩成一个</p><h1 id="更多正则表达式规则"><a href="#更多正则表达式规则" class="headerlink" title="更多正则表达式规则"></a>更多正则表达式规则</h1><p>.     匹配除换行符以外的所有字符<br>x?     匹配 0 次或一次 x 字符串<br>x<em>     匹配 0 次或多次 x 字符串,但匹配可能的最少次数<br>x+     匹配 1 次或多次 x 字符串,但匹配可能的最少次数<br>.</em>     匹配 0 次或多次的任何字符<br>.+     匹配 1 次或多次的任何字符<br>{m}     匹配刚好是 m 个 的指定字符串<br>{m,n}    匹配在 m个 以上 n个 以下 的指定字符串<br>{m,}     匹配 m个 以上 的指定字符串<br>[]     匹配符合 [] 内的字符<br>[^]    匹配不符合 [] 内的字符<br>[0-9]    匹配所有数字字符<br>[a-z]     匹配所有小写字母字符<br>[^0-9]     匹配所有非数字字符<br>[^a-z]    匹配所有非小写字母字符<br>^     匹配字符开头的字符<br>$    匹配字符结尾的字符<br>\d     匹配一个数字的字符,和 [0-9] 语法一样<br>\d+     匹配多个数字字符串,和 [0-9]+ 语法一样<br>\D     非数字,其他同 \d<br>\D+     非数字,其他同 \d+<br>\w     英文字母或数字的字符串,和 [a-zA-Z0-9_] 语法一样<br>\w+     和 [a-zA-Z0-9_]+ 语法一样<br>\W     非英文字母或数字的字符串,和 [^a-zA-Z0-9_] 语法一样<br>\W+     和 [^a-zA-Z0-9_]+ 语法一样<br>\s     空格,和 [\n\t\r\f] 语法一样<br>\s+     和 [\n\t\r\f]+ 一样<br>\S     非空格,和 [^\n\t\r\f] 语法一样<br>\S+     和 [^\n\t\r\f]+ 语法一样<br>\b     匹配以英文字母,数字为边界的字符串<br>\B     匹配不以英文字母,数值为边界的字符串<br>a|b|c     匹配符合a字符 或是b字符 或是c字符 的字符串<br>abc    匹配含有 abc 的字符串 (pattern) () 这个符号会记住所找寻到的字符串,是一个很实用的语法.第一个 () 内所找到的字符串变成 $1 这个变量或是 \1 变量,第二个 () 内所找到的字符串变成 $2 这个变量或是 \2 变量,以此类推下去.<br>/pattern/i     i 这个参数表示忽略英文大小写,也就是在匹配字符串的时候,不考虑英文的大小写问题. \ 如果要在 pattern 模式中找寻一个特殊字符,如 “*”,则要在这个字符前加上 \ 符号,这样才会让特殊字符失效 </p>]]></content>
+        <content type="html"><![CDATA[<p>常用正则汇总。</p><a id="more"></a><h1 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h1><p>i    如果在修饰符中加上”i”，则正则将会取消大小写敏感性，即”a”和”A” 是一样的。<br>m    默认的正则开始”^”和结束”$”只是对于正则字符串如果在修饰符中加上”m”，那么开始和结束将会指字符串的每一行：每一行的开头就是”^”，结尾就是”$”。<br>o    表达式只执行一次。<br>s    如果在修饰符中加入”s”，那么默认的”.”代表除了换行符以外的任何字符将会变成任意字符，也就是包括换行符！<br>x    如果加上该修饰符，表达式中的空白字符将会被忽略，除非它已经被转义。<br>e    替换字符串作为表达式</p><h1 id="更多正则表达式规则"><a href="#更多正则表达式规则" class="headerlink" title="更多正则表达式规则"></a>更多正则表达式规则</h1><p>.     匹配除换行符以外的所有字符<br>x?     匹配 0 次或一次 x 字符串<br>x<em>     匹配 0 次或多次 x 字符串,但匹配可能的最少次数<br>x+     匹配 1 次或多次 x 字符串,但匹配可能的最少次数<br>.</em>     匹配 0 次或多次的任何字符<br>.+     匹配 1 次或多次的任何字符<br>{m}     匹配刚好是 m 个 的指定字符串<br>{m,n}    匹配在 m个 以上 n个 以下 的指定字符串<br>{m,}     匹配 m个 以上 的指定字符串<br>[]     匹配符合 [] 内的字符<br>[^]    匹配不符合 [] 内的字符<br>[0-9]    匹配所有数字字符<br>[a-z]     匹配所有小写字母字符<br>[^0-9]     匹配所有非数字字符<br>[^a-z]    匹配所有非小写字母字符<br>^     匹配字符开头的字符<br>$    匹配字符结尾的字符<br>\d     匹配一个数字的字符,和 [0-9] 语法一样<br>\d+     匹配多个数字字符串,和 [0-9]+ 语法一样<br>\D     非数字,其他同 \d<br>\D+     非数字,其他同 \d+<br>\w     英文字母或数字的字符串,和 [a-zA-Z0-9_] 语法一样<br>\w+     和 [a-zA-Z0-9_]+ 语法一样<br>\W     非英文字母或数字的字符串,和 [^a-zA-Z0-9_] 语法一样<br>\W+     和 [^a-zA-Z0-9_]+ 语法一样<br>\s     空格,和 [\n\t\r\f] 语法一样<br>\s+     和 [\n\t\r\f]+ 一样<br>\S     非空格,和 [^\n\t\r\f] 语法一样<br>\S+     和 [^\n\t\r\f]+ 语法一样<br>\b     匹配以英文字母,数字为边界的字符串<br>\B     匹配不以英文字母,数值为边界的字符串<br>a|b|c     匹配符合a字符 或是b字符 或是c字符 的字符串<br>abc    匹配含有 abc 的字符串 (pattern) () 这个符号会记住所找寻到的字符串,是一个很实用的语法.第一个 () 内所找到的字符串变成 $1 这个变量或是 \1 变量,第二个 () 内所找到的字符串变成 $2 这个变量或是 \2 变量,以此类推下去.<br>/pattern/i     i 这个参数表示忽略英文大小写,也就是在匹配字符串的时候,不考虑英文的大小写问题. \ 如果要在 pattern 模式中找寻一个特殊字符,如 “*”,则要在这个字符前加上 \ 符号,这样才会让特殊字符失效 </p><h1 id="更多修饰符"><a href="#更多修饰符" class="headerlink" title="更多修饰符"></a>更多修饰符</h1><p>A (PCRE_ANCHORED)<br>如果设置了这个修饰符，模式被强制为”锚定”模式，也就是说约束匹配使其仅从 目标字符串的开始位置搜索。这个效果同样可以使用适当的模式构造出来，并且 这也是 perl 种实现这种模式的唯一途径。<br>D (PCRE_DOLLAR_ENDONLY)<br>如果这个修饰符被设置，模式中的元字符美元符号仅仅匹配目标字符串的末尾。如果这个修饰符 没有设置，当字符串以一个换行符结尾时， 美元符号还会匹配该换行符(但不会匹配之前的任何换行符)。 如果设置了修饰符m，这个修饰符被忽略. 在 perl 中没有与此修饰符等同的修饰符。<br>S<br>当一个模式需要多次使用的时候，为了得到匹配速度的提升，值得花费一些时间 对其进行一些额外的分析。如果设置了这个修饰符，这个额外的分析就会执行。当前， 这种对一个模式的分析仅仅适用于非锚定模式的匹配(即没有单独的固定开始字符)。<br>U (PCRE_UNGREEDY)<br>这个修饰符逆转了量词的”贪婪”模式。 使量词默认为非贪婪的，通过量词后紧跟? 的方式可以使其成为贪婪的。这和 perl 是不兼容的。 它同样可以使用 模式内修饰符设置 (?U)进行设置， 或者在量词后以问号标记其非贪婪(比如.*?)。<br>Note:</p><p>在非贪婪模式，通常不能匹配超过 pcre.backtrack_limit 的字符。</p><p>X (PCRE_EXTRA)<br>这个修饰符打开了 PCRE 与 perl 不兼容的附件功能。模式中的任意反斜线后就 ingen 一个 没有特殊含义的字符都会导致一个错误，以此保留这些字符以保证向后兼容性。 默认情况下，在 perl 中，反斜线紧跟一个没有特殊含义的字符被认为是该字符的原文。 当前没有其他特性由这个修饰符控制。<br>J (PCRE_INFO_JCHANGED)<br>内部选项设置(?J)修改本地的PCRE_DUPNAMES选项。允许子组重名， (译注：只能通过内部选项设置，外部的 /J 设置会产生错误。)<br>u (PCRE_UTF8)<br>此修正符打开一个与 perl 不兼容的附加功能。 模式和目标字符串都被认为是 utf-8 的。 无效的目标字符串会导致 preg_* 函数什么都匹配不到； 无效的模式字符串会导致 E_WARNING 级别的错误。 PHP 5.3.4 后，5字节和6字节的 UTF-8 字符序列被考虑为无效（resp. PCRE 7.3 2007-08-28）。 以前就被认为是无效的 UTF-8。</p>]]></content>
       
       
       <categories>
@@ -206,6 +206,31 @@
             <tag> javaScript </tag>
             
             <tag> regex </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>PHP 数据类型</title>
+      <link href="/2019/03/18/2019-03-18-PHP%20%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+      <url>/2019/03/18/2019-03-18-PHP%20%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+      
+        <content type="html"><![CDATA[<p>PHP 支持 9 种原始数据类型。<strong>四种标量类型</strong>：boolean（布尔型）integer（整型）float（浮点型，也称作 double)string（字符串）<strong>三种复合类型</strong>：array（数组）object（对象）callable（可调用）<strong>最后是两种特殊类型</strong>：resource（资源）NULL（无类型）<br><strong>伪类型</strong>：mixed（混合类型）number（数字类型）callback（回调类型，又称为 callable）array|object（数组 | 对象类型）void （无类型）</p><a id="more"></a><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>变量的类型通常不是由程序员设定的，是由 PHP 根据该变量使用的上下文在运行时决定的。</p><h3 id="boolean（布尔型）"><a href="#boolean（布尔型）" class="headerlink" title="boolean（布尔型）"></a>boolean（布尔型）</h3><p>要明确地将一个值转换成 boolean，用 (bool) 或者 (boolean) 来强制转换。但是很多情况下不需要用强制转换，因为当运算符，函数或者流程控制结构需要一个 boolean 参数时，该值会被自动转换。</p><p><strong>当转换为 boolean 时，以下值被认为是 FALSE：</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">布尔值 FALSE 本身</span><br><span class="line">整型值 0（零）</span><br><span class="line">浮点型值 0.0（零）</span><br><span class="line">空字符串，以及字符串 &quot;0&quot;</span><br><span class="line">不包括任何元素的数组</span><br><span class="line">特殊类型 NULL（包括尚未赋值的变量）</span><br><span class="line">从空标记生成的 SimpleXML 对象 (没有验证过 ...)</span><br></pre></td></tr></table></figure><p><strong>例子</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var_dump(0 == &apos;all&apos;); // true</span><br><span class="line">var_dump((int)&apos;all&apos;); // int(0)</span><br><span class="line"></span><br><span class="line">var_dump(0 == (bool)&apos;all&apos;); // false</span><br><span class="line">var_dump((int)true); // int(1)</span><br></pre></td></tr></table></figure></p><h3 id="integer（整型）"><a href="#integer（整型）" class="headerlink" title="integer（整型）"></a>integer（整型）</h3><p>整型值可以使用十进制，十六进制，八进制或二进制表示，前面可以加上可选的符号（- 或者 +）。要使用八进制表达，数字前必须加上 0（零）。要使用十六进制表达，数字前必须加上 0x。要使用二进制表达，数字前必须加上 0b。用 (int) 或 (integer) 强制转换。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var_dump(PHP_INT_SIZE); // 结果：int(4) // 占用4个字节</span><br><span class="line">var_dump(PHP_INT_NAX); // 结果：int(2147483647) // php中int不支持无符号</span><br><span class="line">var_dump(PHP_INT_MIN); // 结果：int(-2147483648)</span><br></pre></td></tr></table></figure><p><strong>例子</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo (int) ( 1.6); // 显示 1  // 当从浮点数转换成整数时，将向下取整。</span><br><span class="line">echo (int)@NaN . PHP_EOL; // int(0) // PHP 7.0.0 起，NaN 和 Infinity 在转换成 integer 时，不再是 undefined 或者依赖于平台，而是都会变成零。</span><br><span class="line">echo (int) ( (0.1+0.7) * 10 ); // 显示 7 // 浮点数强制转换 integer，会出现不可预料的错误</span><br></pre></td></tr></table></figure></p><blockquote><p>待验证：在32位平台上int占4个字节，在64位平台上int占8个字节,16位平台是则分配2个字节<br>整型数的字长和平台有关，尽管通常最大值是大约二十亿（32 位有符号）。64 位平台下的最大值通常是大约 9E18，除了 Windows 下 PHP 7 以前的版本，总是 32 位的。 PHP 不支持无符号的 integer。Integer 值的字长可以用常量 PHP_INT_SIZE来表示，自 PHP 4.4.0 和 PHP 5.0.5后，最大值可以用常量 PHP_INT_MAX 来表示，最小值可以在 PHP 7.0.0 及以后的版本中用常量 PHP_INT_MIN 表示。</p></blockquote><h3 id="float（浮点型，也称作-double"><a href="#float（浮点型，也称作-double" class="headerlink" title="float（浮点型，也称作 double)"></a>float（浮点型，也称作 double)</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> PHP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PHP </tag>
             
         </tags>
       
