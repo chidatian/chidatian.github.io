@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title><![CDATA[git 笔记]]></title>
     <url>%2F2019%2F07%2F10%2F2019-07-10-git%2F</url>
-    <content type="text"><![CDATA[2019-07-10-git.md 分支git branch aaa // 创建分支aaa git branch -a // 查看所有分支git checkout gaia // 切换到 gaia 分支 -b 参数 创建并切换到 该分支 git pull origin gaia // 将远程 gaia 分支 fetch + merge 到当前所在分支git push -u origin master:gaia // 将本地master 分支push 到远程 gaia 分支]]></content>
+    <content type="text"><![CDATA[git 分布式代码托管 分支git branch aaa // 创建分支aaa git branch -a // 查看所有分支git checkout gaia // 切换到 gaia 分支 -b 参数 创建并切换到 该分支 git pull origin gaia // 将远程 gaia 分支 fetch + merge 到当前所在分支git push -u origin master:gaia // 将本地master 分支push 到远程 gaia 分支]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>%2F2019%2F07%2F05%2F2019-07-05-Golang%2F</url>
-    <content type="text"><![CDATA[go envset GOOS=linux // 目标平台的操作系统 darwin, freebsd, linux, windowsset CGO_ENABLED=0 //set GOARCH=amd64 // 386, amd64, arm golang 工具go build test.go // 编译 test.gogo install // 生成包]]></content>
+    <title><![CDATA[golang 笔记]]></title>
+    <url>%2F2019%2F07%2F02%2F2019-07-05-Golang%2F</url>
+    <content type="text"><![CDATA[golang … go envset GOOS=linux // 目标平台的操作系统 darwin, freebsd, linux, windowsset CGO_ENABLED=0 //set GOARCH=amd64 // 386, amd64, arm golang 工具go build test.go // 编译 test.gogo install // 生成包]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Linux 笔记]]></title>
